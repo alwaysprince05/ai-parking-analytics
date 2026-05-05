@@ -12,6 +12,8 @@ pinned: false
 
 ![ParkAI Banner](screenshots/dashboard_main.png)
 
+[![View Live App](https://img.shields.io/badge/View_Live_App-Hugging_Face-blue?style=for-the-badge&logo=huggingface)](https://huggingface.co/spaces/alwaysprince05e/ai-parking-analytics)
+
 **ParkAI** is a premium, "Cyber-Command" grade AI Parking Analytics platform. It transforms standard overhead/drone footage into a high-fidelity monitoring interface featuring real-time vehicle classification, thermal heatmap toggling, and deep-learning-driven occupancy tracking.
 
 ---
