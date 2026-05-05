@@ -1,3 +1,13 @@
+---
+title: AI Parking Analytics Dashboard
+emoji: 🅿️
+colorFrom: cyan
+colorTo: blue
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # 🌌 ParkAI — Next-Gen AI Surveillance Dashboard
 
 ![ParkAI Banner](screenshots/dashboard_main.png)

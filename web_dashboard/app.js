@@ -75,16 +75,44 @@ modeThermal.addEventListener('click', () => {
 });
 
 // Toast Notification System
+let activeToasts = new Set();
+
 function showToast(msg, type) {
     const container = document.getElementById('toast-container');
+    
+    // Hard throttle: Don't show the same message if it's already active
+    if (activeToasts.has(msg)) return;
+    activeToasts.add(msg);
+    
+    // Clear old toasts if switching modes to keep UI clean
+    if (msg.includes("SWITCHED TO")) {
+        container.innerHTML = '';
+    }
+
+    // Maximum 2 concurrent toasts for ultra-clean UI
+    while (container.children.length >= 2) {
+        container.removeChild(container.firstChild);
+    }
+
     const toast = document.createElement('div');
     toast.className = 'toast';
-    toast.innerHTML = `<span>⚠️</span> <div><strong>${type}</strong><br>${msg}</div>`;
+    
+    let icon = "⚠️";
+    if (type === "SECURE") icon = "🛡️";
+    if (type === "INFO") icon = "ℹ️";
+    
+    toast.innerHTML = `<span>${icon}</span> <div><strong>${type}</strong><br>${msg}</div>`;
     container.appendChild(toast);
+    
+    // Auto-dismiss and cleanup
     setTimeout(() => {
         toast.style.opacity = '0';
-        setTimeout(() => toast.remove(), 500);
-    }, 4000);
+        toast.style.transform = 'translateX(50px) scale(0.9)';
+        setTimeout(() => {
+            if (toast.parentNode) toast.remove();
+            activeToasts.delete(msg);
+        }, 500);
+    }, 3000);
 }
 
 // Random Security Alerts

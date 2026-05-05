@@ -237,13 +237,23 @@ header {
 .toast {
     background: rgba(255, 62, 62, 0.15);
     border: 1px solid var(--danger);
-    backdrop-filter: blur(10px);
-    padding: 15px 25px;
-    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    padding: 12px 20px;
+    border-radius: 14px;
     display: flex; align-items: center; gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     animation: toastIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    transition: all 0.4s ease;
+    width: 320px;
 }
-@keyframes toastIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+.toast strong { font-size: 0.7rem; letter-spacing: 1px; color: var(--danger); }
+.toast div { font-size: 0.75rem; color: white; line-height: 1.4; }
+
+@keyframes toastIn { 
+    from { transform: translateX(100%) scale(0.9); opacity: 0; } 
+    to { transform: translateX(0) scale(1); opacity: 1; } 
+}
 
 /* View Switching */
 .dashboard-view {
