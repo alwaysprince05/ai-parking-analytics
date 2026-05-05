@@ -63,14 +63,14 @@ const mainFeed = document.getElementById('main-feed');
 modeNormal.addEventListener('click', () => {
     modeNormal.classList.add('active');
     modeThermal.classList.remove('active');
-    mainFeed.src = 'assets/hero.png';
+    mainFeed.src = 'https://raw.githubusercontent.com/alwaysprince05/ai-parking-analytics/master/web_dashboard/assets/hero.png';
     showToast("SWITCHED TO SPECTRUM MODE", "INFO");
 });
 
 modeThermal.addEventListener('click', () => {
     modeThermal.classList.add('active');
     modeNormal.classList.remove('active');
-    mainFeed.src = 'assets/thermal.png';
+    mainFeed.src = 'https://raw.githubusercontent.com/alwaysprince05/ai-parking-analytics/master/web_dashboard/assets/thermal.png';
     showToast("SWITCHED TO THERMAL MODE", "SECURE");
 });
 
