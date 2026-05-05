@@ -1,38 +1,85 @@
-# Parking Management System — Aerial/Top-Down Edition
+# 🌌 ParkAI — Next-Gen AI Surveillance Dashboard
 
-## Overview
-This project is an automated Parking Management System designed for aerial or top-down video footage. It uses computer vision techniques (background subtraction, contour detection, and YOLO object detection) to detect cars in parking lots from drone or overhead camera footage. The system analyzes parking slot occupancy and produces a processed video with visual overlays indicating parked and available spots.
+![ParkAI Banner](screenshots/dashboard_main.png)
 
-## Features
-- Detects moving and parked cars using OpenCV and YOLOv8
-- Automatically identifies parking slots based on video layout
-- Visualizes occupancy status and statistics on the output video
-- Outputs a compressed video with overlays
+**ParkAI** is a premium, "Cyber-Command" grade AI Parking Analytics platform. It transforms standard overhead/drone footage into a high-fidelity monitoring interface featuring real-time vehicle classification, thermal heatmap toggling, and deep-learning-driven occupancy tracking.
 
-## How to Fork and Run
-1. **Forking the Repository**
-   - Click the "Fork" button on the top right of the GitHub repository page to create your own copy.
-   - Clone your forked repository to your local machine:
-     ```bash
-     git clone https://github.com/your-username/your-forked-repo.git
-     cd your-forked-repo
-     ```
+---
 
-2. **Running the Project**
-   - Place your aerial/top-down parking lot video (e.g., `input.mp4`) in the project directory.
-   - Run the script using Python 3.11 or later:
-     ```bash
-     python main.py input.mp4
-     ```
-   - The output video with overlays will be saved as `output.mp4`.
+## ✨ Key Features
 
-## Relevant Wikipedia Links
-- [Parking lot](https://en.wikipedia.org/wiki/Parking_lot)
-- [Computer vision](https://en.wikipedia.org/wiki/Computer_vision)
-- [YOLO (object detection)](https://en.wikipedia.org/wiki/You_Only_Look_Once)
-- [Background subtraction](https://en.wikipedia.org/wiki/Background_subtraction)
-- [Contour detection](https://en.wikipedia.org/wiki/Contour_(image_processing))
+### 🖥️ High-End Monitoring
+- **Glassmorphism 2.0 UI**: A stunning, semi-transparent interface with animated mesh backgrounds and glowing HUD overlays.
+- **Dual-Mode Feed**: Seamlessly toggle between **Spectrum (Normal)** and **Thermal (Heatmap)** views for enhanced night/low-visibility tracking.
+- **HUD Overlays**: Real-time scan-lines and target tracking boxes for high-tech surveillance feel.
 
-## Developer
+### 🧠 Intelligent Analytics
+- **Vehicle Classification**: Real-time identification of **Sedans, SUVs, Trucks, and EVs**.
+- **7-Day Intelligence**: Interactive bar charts tracking weekly traffic trends and peak occupancy times.
+- **AI Confidence Engine**: Live monitoring of YOLOv8 model performance and interference latency (ms).
 
-## tubakhxn
+### 🚨 Smart Alerts & Security
+- **Dynamic Security Toasts**: Automated notifications for unauthorized entries, illegal parking, and abandoned packages.
+- **Activity Log**: Persistent tracking of vehicle entries/exits per sector.
+
+### ⚙️ System Control
+- **AI Threshold Tuning**: Adjustable confidence levels for the inference engine.
+- **Cloud Sync**: Optional synchronization to AWS/Cloud infrastructure.
+
+---
+
+## 📸 Dashboard Preview
+
+| **Analytics Intelligence** | **System Parameters** |
+|:---:|:---:|
+| ![Analytics](screenshots/analytics.png) | ![Settings](screenshots/settings.png) |
+
+| **Thermal Surveillance Mode** |
+|:---:|
+| ![Thermal Mode](screenshots/thermal_mode.png) |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Computer Vision**: `OpenCV`, `YOLOv8 (Ultralytics)`
+- **Frontend**: `HTML5`, `Vanilla CSS (Modern Grid/Flex)`, `JavaScript (ES6+)`
+- **Design System**: Glassmorphism, CSS Keyframe Animations, Dynamic Mesh Gradients.
+- **Backend**: `Python 3.11+`
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone & Setup
+```bash
+git clone https://github.com/alwaysprince05/ai-parking-analytics.git
+cd ai-parking-analytics
+```
+
+### 2️⃣ Install Dependencies
+```bash
+pip install opencv-python ultralytics numpy
+```
+
+### 3️⃣ Launch the Dashboard
+```bash
+# Start the monitoring engine
+python main.py input.mp4
+
+# Open the dashboard
+cd web_dashboard
+# Open index.html in your browser or run a local server
+python3 -m http.server 8080
+```
+
+---
+
+## 👤 Developer
+**Prince Maurya**  
+[GitHub Profile](https://github.com/alwaysprince05)
+
+---
+
+## ⚖️ License
+Distributed under the MIT License. See `LICENSE` for more information.

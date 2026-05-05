@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Parking Analytics | Ultimate Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Mesh -->
+    <div class="mesh-bg"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-orb"></div>
+                <h1>PARK<span>AI</span></h1>
+            </div>
+            <nav>
+                <div class="nav-item active" data-view="monitoring">
+                    <span class="icon">⬢</span> Live Monitoring
+                </div>
+                <div class="nav-item" data-view="analytics">
+                    <span class="icon">📊</span> Analytics
+                </div>
+                <div class="nav-item" data-view="settings">
+                    <span class="icon">⚙️</span> Settings
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="status-pill-large">
+                    <div class="status-indicator online"></div>
+                    <div class="status-info">
+                        <p>NETWORK STATUS</p>
+                        <span>ENCRYPTED / ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-left">
+                    <h2 id="view-title">Live Feed — Area P7</h2>
+                    <div class="badge-row">
+                        <span class="badge">SECURED</span>
+                        <span class="badge">AI-OPTIMIZED</span>
+                        <span class="badge">4K HDR</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="weather-widget">
+                        <div class="weather-icon">☁</div>
+                        <div class="weather-info">
+                            <span class="temp">22°C</span>
+                            <span class="cond">PARTLY CLOUDY</span>
+                        </div>
+                    </div>
+                    <div class="clock-widget">
+                        <span id="current-date">Oct 26, 2024</span>
+                        <span id="current-time">19:42:18 UTC</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Monitoring View -->
+            <div id="monitoring-view" class="dashboard-view active">
+                <div class="main-grid">
+                    <section class="feed-section">
+                        <div class="glass-card stream-card">
+                            <div class="stream-header">
+                                <div class="stream-tag">CAM_ALPHA_drone_4</div>
+                                <div class="mode-toggle">
+                                    <button id="mode-normal" class="toggle-btn active">NORMAL</button>
+                                    <button id="mode-thermal" class="toggle-btn">THERMAL</button>
+                                </div>
+                            </div>
+                            <div class="stream-wrapper">
+                                <img src="assets/hero.png" alt="Live Feed" id="main-feed">
+                                <div class="hud-layer">
+                                    <div class="hud-corners"></div>
+                                    <div class="scan-line"></div>
+                                    <div class="target-box" style="top: 40%; left: 45%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-row">
+                            <div class="glass-card compact-card">
+                                <h3>Vehicle Classification</h3>
+                                <div class="class-grid">
+                                    <div class="class-item">
+                                        <span class="class-label">SEDANS</span>
+                                        <span class="class-val" id="sedan-count">142</span>
+                                    </div>
+                                    <div class="class-item">
+                                        <span class="class-label">SUVS</span>
+                                        <span class="class-val" id="suv-count">89</span>
+                                    </div>
+                                    <div class="class-item">
+                                        <span class="class-label">TRUCKS</span>
+                                        <span class="class-val" id="truck-count">12</span>
+                                    </div>
+                                    <div class="class-item">
+                                        <span class="class-label">EVS</span>
+                                        <span class="class-val cyan" id="ev-count">34</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="glass-card compact-card">
+                                <h3>AI Confidence Engine</h3>
+                                <div class="confidence-meter">
+                                    <div class="meter-bar">
+                                        <div class="meter-fill" style="width: 98.2%;"></div>
+                                    </div>
+                                    <span class="meter-val">98.2%</span>
+                                </div>
+                                <p class="meter-hint">Model: YOLOv8s @ 12ms interference</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside class="side-panel">
+                        <div class="glass-card occupancy-hero">
+                            <h3>Total Occupancy</h3>
+                            <div class="circular-progress">
+                                <svg viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" />
+                                    <path class="circle-fill" id="occupancy-circle" stroke-dasharray="84, 100" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32" />
+                                </svg>
+                                <div class="progress-text">
+                                    <span id="occ-percent">84%</span>
+                                    <p>OCCUPIED</p>
+                                </div>
+                            </div>
+                            <div class="quick-stats">
+                                <div><p>FREE</p><span id="avail-count" class="green">67</span></div>
+                                <div><p>PARKED</p><span id="occ-count">352</span></div>
+                            </div>
+                        </div>
+                        <div class="glass-card event-log">
+                            <h3>Activity Log</h3>
+                            <div id="notification-log" class="log-container">
+                                <!-- Dynamic entries -->
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Analytics View -->
+            <div id="analytics-view" class="dashboard-view">
+                <div class="main-grid">
+                    <section class="chart-section">
+                        <div class="glass-card chart-hero">
+                            <div class="card-header">
+                                <h3>7-Day Traffic Analysis</h3>
+                                <span class="trend-up">↑ 12% vs last week</span>
+                            </div>
+                            <div class="advanced-chart">
+                                <div class="bar-group">
+                                    <div class="bar-label">420</div>
+                                    <div class="bar" style="height: 40%;"></div>
+                                    <span>MON</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">580</div>
+                                    <div class="bar" style="height: 65%;"></div>
+                                    <span>TUE</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">510</div>
+                                    <div class="bar" style="height: 55%;"></div>
+                                    <span>WED</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">890</div>
+                                    <div class="bar" style="height: 90%;"></div>
+                                    <span>THU</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">720</div>
+                                    <div class="bar" style="height: 75%;"></div>
+                                    <span>FRI</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">980</div>
+                                    <div class="bar highlight" style="height: 100%;"></div>
+                                    <span>SAT</span>
+                                </div>
+                                <div class="bar-group">
+                                    <div class="bar-label">840</div>
+                                    <div class="bar" style="height: 85%;"></div>
+                                    <span>SUN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <aside class="side-panel">
+                        <div class="glass-card mini-stats-card">
+                            <p class="stat-label">PEAK TRAFFIC</p>
+                            <span class="stat-value">18:45</span>
+                            <p class="stat-desc">Saturday Evening</p>
+                        </div>
+                        <div class="glass-card mini-stats-card">
+                            <p class="stat-label">AVG STAY</p>
+                            <span class="stat-value text-blue">2.4h</span>
+                            <p class="stat-desc">Business District</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings-view" class="dashboard-view">
+                <div class="settings-grid">
+                    <div class="glass-card settings-card">
+                        <div class="setting-header">
+                            <div class="setting-icon">🧠</div>
+                            <div class="setting-meta">
+                                <h3>AI Inference Engine</h3>
+                                <p>Control the YOLOv8 detection sensitivity</p>
+                            </div>
+                        </div>
+                        <div class="setting-body">
+                            <div class="form-group">
+                                <label>Confidence Threshold</label>
+                                <div class="slider-container">
+                                    <input type="range" class="pro-slider" value="85">
+                                    <span class="slider-val">0.85</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Deep Learning Fallback</label>
+                                <label class="pro-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="pro-toggle"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card settings-card">
+                        <div class="setting-header">
+                            <div class="setting-icon">🌐</div>
+                            <div class="setting-meta">
+                                <h3>Network & Cloud</h3>
+                                <p>Manage data synchronization</p>
+                            </div>
+                        </div>
+                        <div class="setting-body">
+                            <div class="form-group">
+                                <label>Auto-Sync to AWS</label>
+                                <label class="pro-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="pro-toggle"></span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Local Database Buffer</label>
+                                <select class="pro-select">
+                                    <option>500 MB</option>
+                                    <option selected>1 GB</option>
+                                    <option>5 GB</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Toast Notifications -->
+        <div id="toast-container"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
